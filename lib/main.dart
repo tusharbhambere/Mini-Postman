@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:global_template/global_template.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:mini_postman/app/apptheme.dart';
 import 'package:mini_postman/app/constant.dart';
 import 'package:mini_postman/app/routes/app_routes.dart';
 import 'package:mini_postman/meta/splashScreen/splash_screen.dart';
@@ -17,6 +19,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: AppThemed.light,
       title: 'Flutter Demo',
       home: const SplashScreen(),
       onGenerateRoute: route.configure,

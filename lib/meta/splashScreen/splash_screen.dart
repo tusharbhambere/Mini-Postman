@@ -17,7 +17,8 @@ class SplashScreen extends HookConsumerWidget {
     return initialize.when(
       data: (value) {
         return SplashScreenTemplate(
-            duration: 1,
+            backgroundColor: Colors.white,
+            duration: 2,
             onDoneTimer: (isTimerDone) {
               if (!onboarding) {
                 print(!onboarding);
@@ -26,7 +27,11 @@ class SplashScreen extends HookConsumerWidget {
                 Navigator.of(context).pushReplacementNamed(HomePage.appRoute);
               }
             },
-            children: []);
+            children: [
+              Spacer(),
+              Image.asset('assets/images/splash.gif'),
+              Spacer(),
+            ]);
       },
       loading: () {
         return CircularProgressIndicator().centered();
