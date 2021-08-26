@@ -1,12 +1,8 @@
-import 'package:dio/dio.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:mini_postman/app/exception.dart';
 import 'package:mini_postman/core/model/request_state_notifier.dart';
 import 'package:mini_postman/core/model/response/response_model.dart';
+import 'package:http/http.dart' as http;
 
-final dioProvider = Provider<Dio>((ref) {
-  return Dio();
-});
 final apiProvider = Provider<GetResponse>((ref) {
   return GetResponse(ref.read);
 });
@@ -24,6 +20,8 @@ abstract class BaseApi {
 
 class GetResponse implements BaseApi {
   String responseStatusCode = '';
+  String status = '';
+  int ping = 0;
   dynamic body = '';
   final Reader reader;
 
@@ -34,59 +32,102 @@ class GetResponse implements BaseApi {
     switch (type) {
       case 'GET':
         try {
-          final response = await reader(dioProvider).get(url);
+          final response = await http.get(Uri.parse(url));
 
           try {
             responseStatusCode = response.statusCode.toString();
-            body = response.data;
-            return ResponseModel(responsecode: responseStatusCode, body: body);
-          } on DioError catch (e) {
-            throw DataException.fromDioError(e);
+            body = response.body;
+            ping = response.contentLength!;
+            status = response.reasonPhrase!;
+            return ResponseModel(
+                status: status,
+                responsecode: responseStatusCode,
+                body: body,
+                ping: ping);
+          } catch (e) {
+            return e.toString();
           }
         } catch (e) {
           return throw Exception();
         }
       case "POST":
         try {
-          final response = await reader(dioProvider).post(url, data: body);
+          final response = await http.post(Uri.parse(url), body: body);
           try {
             responseStatusCode = response.statusCode.toString();
-            body = response.data;
-            return ResponseModel(responsecode: responseStatusCode, body: body);
-          } on DioError catch (e) {
-            throw DataException.fromDioError(e);
+            body = response.body;
+            ping = response.contentLength!;
+            status = response.reasonPhrase!;
+            return ResponseModel(
+                status: status,
+                responsecode: responseStatusCode,
+                body: body,
+                ping: ping);
+          } catch (e) {
+            return e.toString();
           }
         } catch (e) {
           return throw Exception();
         }
       case "UPDATE":
         try {
-          final response = await reader(dioProvider).put(url, data: body);
+          final response = await http.put(Uri.parse(url), body: body);
           try {
             responseStatusCode = response.statusCode.toString();
-            body = response.data;
-            return ResponseModel(responsecode: responseStatusCode, body: body);
-          } on DioError catch (e) {
-            throw DataException.fromDioError(e);
+            body = response.body;
+            ping = response.contentLength!;
+            status = response.reasonPhrase!;
+            return ResponseModel(
+                status: status,
+                responsecode: responseStatusCode,
+                body: body,
+                ping: ping);
+          } catch (e) {
+            return e.toString();
           }
         } catch (e) {
           return throw Exception();
         }
       case "DELETE":
         try {
-          final response = await reader(dioProvider).delete(url);
+          final response = await http.delete(Uri.parse(url));
           try {
             responseStatusCode = response.statusCode.toString();
-            body = response.data;
-            return ResponseModel(responsecode: responseStatusCode, body: body);
-          } on DioError catch (e) {
-            throw DataException.fromDioError(e);
+            body = response.body;
+            ping = response.contentLength!;
+            status = response.reasonPhrase!;
+            return ResponseModel(
+                status: status,
+                responsecode: responseStatusCode,
+                body: body,
+                ping: ping);
+          } catch (e) {
+            return e.toString();
           }
         } catch (e) {
           return throw Exception();
         }
 
       default:
+        try {
+          final response = await http.get(Uri.parse(url));
+
+          try {
+            responseStatusCode = response.statusCode.toString();
+            body = response.body;
+            ping = response.contentLength!;
+            status = response.reasonPhrase!;
+            return ResponseModel(
+                status: status,
+                responsecode: responseStatusCode,
+                body: body,
+                ping: ping);
+          } catch (e) {
+            return e.toString();
+          }
+        } catch (e) {
+          return throw Exception();
+        }
     }
   }
 }

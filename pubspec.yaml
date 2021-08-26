@@ -22,24 +22,22 @@ environment:
 
 dependencies:
   cupertino_icons: ^1.0.2
-  dio: ^4.0.0
   flutter:
     sdk: flutter
-  flutter_hooks: ^0.18.0
+  global_template:
+    path: global
+  google_fonts: ^2.1.0
   hooks_riverpod: ^1.0.0-dev.7
-  velocity_x: ^3.3.0
+  http: ^0.13.3
   sentry_flutter: ^5.1.0
   shared_preferences: ^2.0.6
-  google_fonts: ^2.1.0
-
-  global_template:
-     path: global
+  velocity_x: ^3.3.0
 
 dev_dependencies:
-  freezed: 
   build_runner: ^2.1.1
   flutter_test:
     sdk: flutter
+  freezed: null
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

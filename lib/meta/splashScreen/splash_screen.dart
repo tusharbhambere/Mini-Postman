@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:global_template/global_template.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mini_postman/core/notifer/initialise.notifer.dart';
-import 'package:mini_postman/meta/Home/home_page.dart';
+import 'package:mini_postman/meta/Home/home.dart';
 import 'package:mini_postman/meta/onBoardingscreen/onBoarding_screen.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -24,7 +24,7 @@ class SplashScreen extends HookConsumerWidget {
                 print(!onboarding);
                 Navigator.of(context).pushReplacementNamed(OnBoarding.route);
               } else {
-                Navigator.of(context).pushReplacementNamed(HomePage.appRoute);
+                Navigator.of(context).pushReplacementNamed(HomePage.route);
               }
             },
             children: [

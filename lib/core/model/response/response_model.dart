@@ -4,5 +4,8 @@ part 'response_model.freezed.dart';
 @freezed
 abstract class ResponseModel with _$ResponseModel {
   const factory ResponseModel(
-      {required String responsecode, required dynamic body}) = _ResponseModel;
+      {required String responsecode,
+      required String status,
+      required dynamic body,
+      required int ping}) = _ResponseModel;
 }

@@ -3,7 +3,7 @@ import 'package:global_template/global_template.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mini_postman/app/constant.dart';
 import 'package:mini_postman/core/notifer/initialise.notifer.dart';
-import 'package:mini_postman/meta/Home/home_page.dart';
+import 'package:mini_postman/meta/Home/home.dart';
 
 class OnBoarding extends HookConsumerWidget {
   static const route = '/onboarding-screen';
@@ -49,7 +49,7 @@ class OnBoarding extends HookConsumerWidget {
         onClickNext: (value) => '',
         onClickFinish: () async {
           await savingstate.setOnboard(value: true);
-          Navigator.of(context).pushReplacementNamed(HomePage.appRoute);
+          Navigator.of(context).pushReplacementNamed(HomePage.route);
         },
       ),
     );

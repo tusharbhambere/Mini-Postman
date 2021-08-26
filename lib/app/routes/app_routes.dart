@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:global_template/functions/global_function.dart';
-import 'package:mini_postman/meta/Home/home_page.dart';
-import 'package:mini_postman/meta/Home/methods/response.dart';
+import 'package:mini_postman/meta/Home/home.dart';
+import 'package:mini_postman/meta/Home/methods/RequestAll/request.dart';
+import 'package:mini_postman/meta/Home/methods/Response/response.dart';
 import 'package:mini_postman/meta/onBoardingscreen/onBoarding_screen.dart';
 import 'package:mini_postman/meta/splashScreen/splash_screen.dart';
 
@@ -14,7 +15,7 @@ class MyRoutes {
         return route.fadeTransition(
           screen: (ctx, animation, secondaryAnimation) => SplashScreen(),
         );
-      case HomePage.appRoute:
+      case HomePage.route:
         return route.slideTransition(
           transitionDuration: Duration(milliseconds: 1500),
           slidePosition: SlidePosition.fromLeft,
@@ -24,9 +25,13 @@ class MyRoutes {
         return route.scaleTransition(
           screen: (ctx, animation, secondaryAnimation) => OnBoarding(),
         );
-      case Response.approute:
+      case ResponsePage.approute:
         return route.fadeTransition(
-          screen: (ctx, animation, secondaryAnimation) => Response(),
+          screen: (ctx, animation, secondaryAnimation) => ResponsePage(),
+        );
+      case RequestTab.route:
+        return route.fadeTransition(
+          screen: (ctx, animation, secondaryAnimation) => RequestTab(),
         );
 
       default:

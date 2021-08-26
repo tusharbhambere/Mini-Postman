@@ -4,9 +4,9 @@ import 'package:mini_postman/core/model/response/response_model.dart';
 import 'package:mini_postman/core/repositroy/getAPi.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-class Response extends HookConsumerWidget {
+class ResponsePage extends HookConsumerWidget {
   static const approute = 'response';
-  const Response({Key? key}) : super(key: key);
+  const ResponsePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -21,8 +21,10 @@ class Response extends HookConsumerWidget {
         return VxBox(
             child: SingleChildScrollView(
                 child: VStack([
+          Text(responseModel.ping.toString()),
+          Text(responseModel.status),
           Text(responseModel.responsecode),
-          Text(responseModel.body.toString())
+          Text(responseModel.body.toString()),
         ]))).make();
       },
       loading: () {
