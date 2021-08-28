@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:developer';
+
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mini_postman/core/model/request_state_notifier.dart';
 import 'package:mini_postman/core/model/response/response_model.dart';
@@ -15,76 +18,88 @@ final urlResponseProvider =
 //
 
 abstract class BaseApi {
-  Future makeRequest({required String url, required String type});
+  Future makeRequest(
+      {required String url,
+      required String type,
+      required Map<dynamic, dynamic> databody});
 }
 
 class GetResponse implements BaseApi {
   String responseStatusCode = '';
   String status = '';
   int ping = 0;
-  dynamic body = '';
+  String body = '';
   final Reader reader;
 
   GetResponse(this.reader);
 
   @override
-  Future makeRequest({required String url, required String type}) async {
+  Future makeRequest(
+      {required String url,
+      required String type,
+      Map<dynamic, dynamic>? databody}) async {
     switch (type) {
-      case 'GET':
-        try {
-          final response = await http.get(Uri.parse(url));
+      case "GET":
+        log(type);
+        final response = await http.get(Uri.parse(url));
 
-          try {
-            responseStatusCode = response.statusCode.toString();
-            body = response.body;
-            ping = response.contentLength!;
-            status = response.reasonPhrase!;
-            return ResponseModel(
-                status: status,
-                responsecode: responseStatusCode,
-                body: body,
-                ping: ping);
-          } catch (e) {
-            return e.toString();
-          }
-        } catch (e) {
-          return throw Exception();
-        }
-      case "POST":
         try {
-          final response = await http.post(Uri.parse(url), body: body);
-          try {
-            responseStatusCode = response.statusCode.toString();
-            body = response.body;
-            ping = response.contentLength!;
-            status = response.reasonPhrase!;
-            return ResponseModel(
-                status: status,
-                responsecode: responseStatusCode,
-                body: body,
-                ping: ping);
-          } catch (e) {
-            return e.toString();
-          }
+          responseStatusCode = response.statusCode.toString();
+          var object = json.decode(response.body);
+          body = JsonEncoder.withIndent('  ').convert(object);
+          ping = response.contentLength!;
+          status = response.reasonPhrase!;
         } catch (e) {
-          return throw Exception();
+          responseStatusCode = response.statusCode.toString();
+          ping = response.contentLength!;
+          status = response.reasonPhrase!;
         }
-      case "UPDATE":
+        return ResponseModel(
+            status: status,
+            responsecode: responseStatusCode,
+            newBody: body,
+            ping: ping);
+
+      case "POST":
+        final response = await http.post(Uri.parse(url), body: databody);
+        try {
+          responseStatusCode = response.statusCode.toString();
+          var object = json.decode(response.body);
+          body = JsonEncoder.withIndent('  ').convert(object);
+          ping = response.contentLength!;
+          status = response.reasonPhrase!;
+        } catch (e) {
+          responseStatusCode = response.statusCode.toString();
+          body = response.body;
+          ping = response.contentLength!;
+          status = response.reasonPhrase!;
+        }
+        return ResponseModel(
+            responsecode: responseStatusCode,
+            status: status,
+            newBody: body,
+            ping: ping);
+
+      case "PUT":
         try {
           final response = await http.put(Uri.parse(url), body: body);
           try {
             responseStatusCode = response.statusCode.toString();
+            var object = json.decode(response.body);
+            body = JsonEncoder.withIndent('  ').convert(object);
+            ping = response.contentLength!;
+            status = response.reasonPhrase!;
+          } catch (e) {
+            responseStatusCode = response.statusCode.toString();
             body = response.body;
             ping = response.contentLength!;
             status = response.reasonPhrase!;
-            return ResponseModel(
-                status: status,
-                responsecode: responseStatusCode,
-                body: body,
-                ping: ping);
-          } catch (e) {
-            return e.toString();
           }
+          return ResponseModel(
+              status: status,
+              responsecode: responseStatusCode,
+              newBody: body,
+              ping: ping);
         } catch (e) {
           return throw Exception();
         }
@@ -93,41 +108,45 @@ class GetResponse implements BaseApi {
           final response = await http.delete(Uri.parse(url));
           try {
             responseStatusCode = response.statusCode.toString();
+            var object = json.decode(response.body);
+            body = JsonEncoder.withIndent('  ').convert(object);
+            ping = response.contentLength!;
+            status = response.reasonPhrase!;
+          } catch (e) {
+            responseStatusCode = response.statusCode.toString();
             body = response.body;
             ping = response.contentLength!;
             status = response.reasonPhrase!;
-            return ResponseModel(
-                status: status,
-                responsecode: responseStatusCode,
-                body: body,
-                ping: ping);
-          } catch (e) {
-            return e.toString();
           }
+          return ResponseModel(
+              status: status,
+              responsecode: responseStatusCode,
+              newBody: body,
+              ping: ping);
         } catch (e) {
           return throw Exception();
         }
 
       default:
-        try {
-          final response = await http.get(Uri.parse(url));
+        final response = await http.get(Uri.parse(url));
 
-          try {
-            responseStatusCode = response.statusCode.toString();
-            body = response.body;
-            ping = response.contentLength!;
-            status = response.reasonPhrase!;
-            return ResponseModel(
-                status: status,
-                responsecode: responseStatusCode,
-                body: body,
-                ping: ping);
-          } catch (e) {
-            return e.toString();
-          }
+        try {
+          responseStatusCode = response.statusCode.toString();
+          var object = json.decode(response.body);
+          body = JsonEncoder.withIndent('  ').convert(object);
+          ping = response.contentLength!;
+          status = response.reasonPhrase!;
         } catch (e) {
-          return throw Exception();
+          responseStatusCode = response.statusCode.toString();
+          body = response.body;
+          ping = response.contentLength!;
+          status = response.reasonPhrase!;
         }
+        return ResponseModel(
+            status: status,
+            responsecode: responseStatusCode,
+            newBody: body,
+            ping: ping);
     }
   }
 }
@@ -136,6 +155,7 @@ class GetResponseNotifer extends RequestStateNotifier {
   final GetResponse getResponse;
 
   GetResponseNotifer(this.getResponse);
-  getResponses(String url, String type) =>
-      makeRequest(() => getResponse.makeRequest(url: url, type: type));
+  getResponses(String url, String type, Map<dynamic, dynamic>? data) =>
+      makeRequest(
+          () => getResponse.makeRequest(url: url, type: type, databody: data));
 }

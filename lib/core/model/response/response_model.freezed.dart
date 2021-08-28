@@ -19,12 +19,12 @@ class _$ResponseModelTearOff {
   _ResponseModel call(
       {required String responsecode,
       required String status,
-      required dynamic body,
+      required String newBody,
       required int ping}) {
     return _ResponseModel(
       responsecode: responsecode,
       status: status,
-      body: body,
+      newBody: newBody,
       ping: ping,
     );
   }
@@ -37,7 +37,7 @@ const $ResponseModel = _$ResponseModelTearOff();
 mixin _$ResponseModel {
   String get responsecode => throw _privateConstructorUsedError;
   String get status => throw _privateConstructorUsedError;
-  dynamic get body => throw _privateConstructorUsedError;
+  String get newBody => throw _privateConstructorUsedError;
   int get ping => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -50,7 +50,7 @@ abstract class $ResponseModelCopyWith<$Res> {
   factory $ResponseModelCopyWith(
           ResponseModel value, $Res Function(ResponseModel) then) =
       _$ResponseModelCopyWithImpl<$Res>;
-  $Res call({String responsecode, String status, dynamic body, int ping});
+  $Res call({String responsecode, String status, String newBody, int ping});
 }
 
 /// @nodoc
@@ -66,7 +66,7 @@ class _$ResponseModelCopyWithImpl<$Res>
   $Res call({
     Object? responsecode = freezed,
     Object? status = freezed,
-    Object? body = freezed,
+    Object? newBody = freezed,
     Object? ping = freezed,
   }) {
     return _then(_value.copyWith(
@@ -78,10 +78,10 @@ class _$ResponseModelCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String,
-      body: body == freezed
-          ? _value.body
-          : body // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+      newBody: newBody == freezed
+          ? _value.newBody
+          : newBody // ignore: cast_nullable_to_non_nullable
+              as String,
       ping: ping == freezed
           ? _value.ping
           : ping // ignore: cast_nullable_to_non_nullable
@@ -97,7 +97,7 @@ abstract class _$ResponseModelCopyWith<$Res>
           _ResponseModel value, $Res Function(_ResponseModel) then) =
       __$ResponseModelCopyWithImpl<$Res>;
   @override
-  $Res call({String responsecode, String status, dynamic body, int ping});
+  $Res call({String responsecode, String status, String newBody, int ping});
 }
 
 /// @nodoc
@@ -115,7 +115,7 @@ class __$ResponseModelCopyWithImpl<$Res>
   $Res call({
     Object? responsecode = freezed,
     Object? status = freezed,
-    Object? body = freezed,
+    Object? newBody = freezed,
     Object? ping = freezed,
   }) {
     return _then(_ResponseModel(
@@ -127,10 +127,10 @@ class __$ResponseModelCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String,
-      body: body == freezed
-          ? _value.body
-          : body // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+      newBody: newBody == freezed
+          ? _value.newBody
+          : newBody // ignore: cast_nullable_to_non_nullable
+              as String,
       ping: ping == freezed
           ? _value.ping
           : ping // ignore: cast_nullable_to_non_nullable
@@ -145,7 +145,7 @@ class _$_ResponseModel implements _ResponseModel {
   const _$_ResponseModel(
       {required this.responsecode,
       required this.status,
-      required this.body,
+      required this.newBody,
       required this.ping});
 
   @override
@@ -153,13 +153,13 @@ class _$_ResponseModel implements _ResponseModel {
   @override
   final String status;
   @override
-  final dynamic body;
+  final String newBody;
   @override
   final int ping;
 
   @override
   String toString() {
-    return 'ResponseModel(responsecode: $responsecode, status: $status, body: $body, ping: $ping)';
+    return 'ResponseModel(responsecode: $responsecode, status: $status, newBody: $newBody, ping: $ping)';
   }
 
   @override
@@ -171,8 +171,9 @@ class _$_ResponseModel implements _ResponseModel {
                     .equals(other.responsecode, responsecode)) &&
             (identical(other.status, status) ||
                 const DeepCollectionEquality().equals(other.status, status)) &&
-            (identical(other.body, body) ||
-                const DeepCollectionEquality().equals(other.body, body)) &&
+            (identical(other.newBody, newBody) ||
+                const DeepCollectionEquality()
+                    .equals(other.newBody, newBody)) &&
             (identical(other.ping, ping) ||
                 const DeepCollectionEquality().equals(other.ping, ping)));
   }
@@ -182,7 +183,7 @@ class _$_ResponseModel implements _ResponseModel {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(responsecode) ^
       const DeepCollectionEquality().hash(status) ^
-      const DeepCollectionEquality().hash(body) ^
+      const DeepCollectionEquality().hash(newBody) ^
       const DeepCollectionEquality().hash(ping);
 
   @JsonKey(ignore: true)
@@ -195,7 +196,7 @@ abstract class _ResponseModel implements ResponseModel {
   const factory _ResponseModel(
       {required String responsecode,
       required String status,
-      required dynamic body,
+      required String newBody,
       required int ping}) = _$_ResponseModel;
 
   @override
@@ -203,7 +204,7 @@ abstract class _ResponseModel implements ResponseModel {
   @override
   String get status => throw _privateConstructorUsedError;
   @override
-  dynamic get body => throw _privateConstructorUsedError;
+  String get newBody => throw _privateConstructorUsedError;
   @override
   int get ping => throw _privateConstructorUsedError;
   @override

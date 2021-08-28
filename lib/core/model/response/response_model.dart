@@ -6,6 +6,6 @@ abstract class ResponseModel with _$ResponseModel {
   const factory ResponseModel(
       {required String responsecode,
       required String status,
-      required dynamic body,
+      required String newBody,
       required int ping}) = _ResponseModel;
 }

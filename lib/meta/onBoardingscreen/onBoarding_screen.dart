@@ -3,7 +3,7 @@ import 'package:global_template/global_template.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mini_postman/app/constant.dart';
 import 'package:mini_postman/core/notifer/initialise.notifer.dart';
-import 'package:mini_postman/meta/Home/home.dart';
+import 'package:mini_postman/meta/home_page.dart';
 
 class OnBoarding extends HookConsumerWidget {
   static const route = '/onboarding-screen';

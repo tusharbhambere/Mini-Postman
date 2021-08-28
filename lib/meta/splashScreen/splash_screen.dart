@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:global_template/global_template.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mini_postman/core/notifer/initialise.notifer.dart';
-import 'package:mini_postman/meta/Home/home.dart';
 import 'package:mini_postman/meta/onBoardingscreen/onBoarding_screen.dart';
 import 'package:velocity_x/velocity_x.dart';
+
+import '../home_page.dart';
 
 class SplashScreen extends HookConsumerWidget {
   static const route = '/splash_screen';

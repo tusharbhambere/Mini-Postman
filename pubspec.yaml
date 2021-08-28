@@ -24,6 +24,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
+  flutter_hooks: ^0.18.0
   global_template:
     path: global
   google_fonts: ^2.1.0

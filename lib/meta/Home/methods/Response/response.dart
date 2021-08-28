@@ -16,7 +16,6 @@ class ResponsePage extends HookConsumerWidget {
         child: apiGet.when(
       idle: () => Text('ENter Valid Url'),
       success: (data) {
-        print(data);
         final ResponseModel responseModel = data;
         return VxBox(
             child: SingleChildScrollView(
@@ -24,7 +23,7 @@ class ResponsePage extends HookConsumerWidget {
           Text(responseModel.ping.toString()),
           Text(responseModel.status),
           Text(responseModel.responsecode),
-          Text(responseModel.body.toString()),
+          Text(responseModel.newBody),
         ]))).make();
       },
       loading: () {
