@@ -4,7 +4,9 @@ import 'dart:developer';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mini_postman/core/model/request_state_notifier.dart';
 import 'package:mini_postman/core/model/response/response_model.dart';
+import 'package:mini_postman/core/notifer/state.notifier.dart';
 import 'package:http/http.dart' as http;
+import 'package:mini_postman/core/repositroy/base.api.dart';
 
 final apiProvider = Provider<GetResponse>((ref) {
   return GetResponse(ref.read);
@@ -17,15 +19,8 @@ final urlResponseProvider =
 });
 //
 
-abstract class BaseApi {
-  Future makeRequest(
-      {required String url,
-      required String type,
-      required Map<dynamic, dynamic> databody});
-}
-
 class GetResponse implements BaseApi {
-  String responseStatusCode = '';
+  int responseStatusCode = 0;
   String status = '';
   int ping = 0;
   String body = '';
@@ -40,17 +35,18 @@ class GetResponse implements BaseApi {
       Map<dynamic, dynamic>? databody}) async {
     switch (type) {
       case "GET":
-        log(type);
         final response = await http.get(Uri.parse(url));
 
         try {
-          responseStatusCode = response.statusCode.toString();
-          var object = json.decode(response.body);
-          body = JsonEncoder.withIndent('  ').convert(object);
+          responseStatusCode = response.statusCode;
+
+          final object = json.decode(response.body);
+          log(object);
+          body = const JsonEncoder.withIndent('  ').convert(object);
           ping = response.contentLength!;
           status = response.reasonPhrase!;
         } catch (e) {
-          responseStatusCode = response.statusCode.toString();
+          responseStatusCode = response.statusCode;
           ping = response.contentLength!;
           status = response.reasonPhrase!;
         }
@@ -63,13 +59,13 @@ class GetResponse implements BaseApi {
       case "POST":
         final response = await http.post(Uri.parse(url), body: databody);
         try {
-          responseStatusCode = response.statusCode.toString();
-          var object = json.decode(response.body);
-          body = JsonEncoder.withIndent('  ').convert(object);
+          responseStatusCode = response.statusCode;
+          final object = json.decode(response.body);
+          body = const JsonEncoder.withIndent('  ').convert(object);
           ping = response.contentLength!;
           status = response.reasonPhrase!;
         } catch (e) {
-          responseStatusCode = response.statusCode.toString();
+          responseStatusCode = response.statusCode;
           body = response.body;
           ping = response.contentLength!;
           status = response.reasonPhrase!;
@@ -84,13 +80,13 @@ class GetResponse implements BaseApi {
         try {
           final response = await http.put(Uri.parse(url), body: body);
           try {
-            responseStatusCode = response.statusCode.toString();
-            var object = json.decode(response.body);
-            body = JsonEncoder.withIndent('  ').convert(object);
+            responseStatusCode = response.statusCode;
+            final object = json.decode(response.body);
+            body = const JsonEncoder.withIndent('  ').convert(object);
             ping = response.contentLength!;
             status = response.reasonPhrase!;
           } catch (e) {
-            responseStatusCode = response.statusCode.toString();
+            responseStatusCode = response.statusCode;
             body = response.body;
             ping = response.contentLength!;
             status = response.reasonPhrase!;
@@ -107,18 +103,18 @@ class GetResponse implements BaseApi {
         try {
           final response = await http.delete(Uri.parse(url));
           try {
-            responseStatusCode = response.statusCode.toString();
-            var object = json.decode(response.body);
-            body = JsonEncoder.withIndent('  ').convert(object);
+            responseStatusCode = response.statusCode;
+            final object = json.decode(response.body);
+            body = const JsonEncoder.withIndent('  ').convert(object);
             ping = response.contentLength!;
             status = response.reasonPhrase!;
           } catch (e) {
-            responseStatusCode = response.statusCode.toString();
+            responseStatusCode = response.statusCode;
             body = response.body;
             ping = response.contentLength!;
             status = response.reasonPhrase!;
           }
-          return ResponseModel(
+          ResponseModel(
               status: status,
               responsecode: responseStatusCode,
               newBody: body,
@@ -126,18 +122,19 @@ class GetResponse implements BaseApi {
         } catch (e) {
           return throw Exception();
         }
+        break;
 
       default:
         final response = await http.get(Uri.parse(url));
 
         try {
-          responseStatusCode = response.statusCode.toString();
-          var object = json.decode(response.body);
-          body = JsonEncoder.withIndent('  ').convert(object);
+          responseStatusCode = response.statusCode;
+          final object = json.decode(response.body);
+          body = const JsonEncoder.withIndent('  ').convert(object);
           ping = response.contentLength!;
           status = response.reasonPhrase!;
         } catch (e) {
-          responseStatusCode = response.statusCode.toString();
+          responseStatusCode = response.statusCode;
           body = response.body;
           ping = response.contentLength!;
           status = response.reasonPhrase!;
@@ -149,13 +146,4 @@ class GetResponse implements BaseApi {
             ping: ping);
     }
   }
-}
-
-class GetResponseNotifer extends RequestStateNotifier {
-  final GetResponse getResponse;
-
-  GetResponseNotifer(this.getResponse);
-  getResponses(String url, String type, Map<dynamic, dynamic>? data) =>
-      makeRequest(
-          () => getResponse.makeRequest(url: url, type: type, databody: data));
 }

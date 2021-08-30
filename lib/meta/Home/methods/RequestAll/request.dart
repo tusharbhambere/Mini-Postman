@@ -12,7 +12,7 @@ class RequestTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Headers(),
+        const Headers(),
         50.heightBox,
         BodyPage(
           editingController: controller,

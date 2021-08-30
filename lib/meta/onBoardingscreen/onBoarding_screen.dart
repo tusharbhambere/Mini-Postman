@@ -14,36 +14,32 @@ class OnBoarding extends HookConsumerWidget {
     final savingstate = ref.read(initiliazeProvider.notifier);
     return Scaffold(
       body: OnboardingPage(
-        backgroundColorCircleIndicator: constant.mainColor,
+        // backgroundColorCircleIndicator: constant.mainColor,
         backgroundOnboarding: Colors.blueGrey,
         skipButtonStyle: OutlinedButton.styleFrom(
             side: const BorderSide(color: Colors.white)),
-        iconNext: Icon(Icons.next_plan),
-        skipTitleStyle: TextStyle(color: constant.mainColor, fontSize: 15),
+        iconNext: const Icon(Icons.next_plan),
+        skipTitleStyle: const TextStyle(fontSize: 15),
         skipTitle: 'Skip',
         items: [
           OnboardingItem(
             animationType: OnboardingItemAnimationType.RTL,
             title: 'Get Method',
-            titleStyle: fontsMontserratAlternate.copyWith(
-              fontSize: 28,
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-            ),
+
             subtitle: 'Unlimated Api Calls',
-            subtitleStyle: fontComfortaa.copyWith(color: Colors.white),
+            // subtitleStyle: fontComfortaa.copyWith(color: Colors.white),
             logo: FractionallySizedBox(
                 widthFactor: 4,
                 child: Transform.rotate(
                   angle: 6.5,
                   child: Image.asset(
-                    constant.imagePath + 'onboarding1.png',
+                    '${constant.imagePath}/onboarding1.png',
                     height: 230,
                   ),
                 )),
           ),
-          OnboardingItem(title: 'Postman4'),
-          OnboardingItem(title: 'Postman3'),
+          const OnboardingItem(title: 'Postman4'),
+          const OnboardingItem(title: 'Postman3'),
         ],
         onPageChanged: (value) => '',
         onClickNext: (value) => '',

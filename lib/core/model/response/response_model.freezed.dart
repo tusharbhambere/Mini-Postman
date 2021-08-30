@@ -17,7 +17,7 @@ class _$ResponseModelTearOff {
   const _$ResponseModelTearOff();
 
   _ResponseModel call(
-      {required String responsecode,
+      {required int responsecode,
       required String status,
       required String newBody,
       required int ping}) {
@@ -35,7 +35,7 @@ const $ResponseModel = _$ResponseModelTearOff();
 
 /// @nodoc
 mixin _$ResponseModel {
-  String get responsecode => throw _privateConstructorUsedError;
+  int get responsecode => throw _privateConstructorUsedError;
   String get status => throw _privateConstructorUsedError;
   String get newBody => throw _privateConstructorUsedError;
   int get ping => throw _privateConstructorUsedError;
@@ -50,7 +50,7 @@ abstract class $ResponseModelCopyWith<$Res> {
   factory $ResponseModelCopyWith(
           ResponseModel value, $Res Function(ResponseModel) then) =
       _$ResponseModelCopyWithImpl<$Res>;
-  $Res call({String responsecode, String status, String newBody, int ping});
+  $Res call({int responsecode, String status, String newBody, int ping});
 }
 
 /// @nodoc
@@ -73,7 +73,7 @@ class _$ResponseModelCopyWithImpl<$Res>
       responsecode: responsecode == freezed
           ? _value.responsecode
           : responsecode // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -97,7 +97,7 @@ abstract class _$ResponseModelCopyWith<$Res>
           _ResponseModel value, $Res Function(_ResponseModel) then) =
       __$ResponseModelCopyWithImpl<$Res>;
   @override
-  $Res call({String responsecode, String status, String newBody, int ping});
+  $Res call({int responsecode, String status, String newBody, int ping});
 }
 
 /// @nodoc
@@ -122,7 +122,7 @@ class __$ResponseModelCopyWithImpl<$Res>
       responsecode: responsecode == freezed
           ? _value.responsecode
           : responsecode // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -149,7 +149,7 @@ class _$_ResponseModel implements _ResponseModel {
       required this.ping});
 
   @override
-  final String responsecode;
+  final int responsecode;
   @override
   final String status;
   @override
@@ -194,13 +194,13 @@ class _$_ResponseModel implements _ResponseModel {
 
 abstract class _ResponseModel implements ResponseModel {
   const factory _ResponseModel(
-      {required String responsecode,
+      {required int responsecode,
       required String status,
       required String newBody,
       required int ping}) = _$_ResponseModel;
 
   @override
-  String get responsecode => throw _privateConstructorUsedError;
+  int get responsecode => throw _privateConstructorUsedError;
   @override
   String get status => throw _privateConstructorUsedError;
   @override

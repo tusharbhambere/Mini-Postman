@@ -11,17 +11,17 @@ class MyRoutes {
     switch (settings.name) {
       case SplashScreen.route:
         return route.fadeTransition(
-          screen: (ctx, animation, secondaryAnimation) => SplashScreen(),
+          screen: (ctx, animation, secondaryAnimation) => const SplashScreen(),
         );
       case HomePage.route:
         return route.slideTransition(
-          transitionDuration: Duration(milliseconds: 1500),
+          transitionDuration: const Duration(milliseconds: 1500),
           slidePosition: SlidePosition.fromLeft,
           screen: (ctx, animation, secondaryAnimation) => HomePage(),
         );
       case OnBoarding.route:
         return route.scaleTransition(
-          screen: (ctx, animation, secondaryAnimation) => OnBoarding(),
+          screen: (ctx, animation, secondaryAnimation) => const OnBoarding(),
         );
 
       default:

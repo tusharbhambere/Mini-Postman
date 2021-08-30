@@ -22,23 +22,22 @@ class SplashScreen extends HookConsumerWidget {
             duration: 2,
             onDoneTimer: (isTimerDone) {
               if (!onboarding) {
-                print(!onboarding);
                 Navigator.of(context).pushReplacementNamed(OnBoarding.route);
               } else {
                 Navigator.of(context).pushReplacementNamed(HomePage.route);
               }
             },
             children: [
-              Spacer(),
+              const Spacer(),
               Image.asset('assets/images/splash.gif'),
-              Spacer(),
+              const Spacer(),
             ]);
       },
       loading: () {
-        return CircularProgressIndicator().centered();
+        return const CircularProgressIndicator().centered();
       },
       error: (error, stackTrace) {
-        return Text('errror');
+        return const Text('errror');
       },
     );
   }

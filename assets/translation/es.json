@@ -1,0 +1,16 @@
+{
+    "homeTitle":"Mini PostMan", 
+  "request" :"Pedir",
+  "response":"la reacción",
+  "language":"Idioma",
+  "send":"Enviar",
+  "playstore":"En PlayStore",
+  "rating":"la valuación",
+  "giveRating":"Nos califica",
+  "spanish":"Spanish",
+  "changeLanguage":"Cambiar idioma",
+  "changeTheme":"Cambiar de tema",
+  "theme":"Tema",
+  "emptyResponse":"Respuesta vacía",
+  "pasteUrl":"Pegar URL"
+}

@@ -9,9 +9,11 @@ class BodyPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: TextFormFieldCustom(
+        backgroundColor: Colors.transparent,
+        maxLines: 999,
         keyboardType: TextInputType.multiline,
         textInputAction: TextInputAction.newline,
-        borderColor: Colors.blueAccent[200],
+        borderColor: Colors.green[300],
         hintText: 'Enter Json',
         disableOutlineBorder: false,
         controller: editingController,
