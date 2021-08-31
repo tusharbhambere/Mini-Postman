@@ -23,6 +23,7 @@ class Constant {
 
   final themeMode = ["System", "Dark", "Light"];
   final Color mainColor = Vx.hexToColor('#EF5A24');
+  final Color onBoarding1Color = Vx.hexToColor('#F4AE4F');
   String get imagePath => 'assets/images/';
   String get onBoardingKey => 'saveIt';
 

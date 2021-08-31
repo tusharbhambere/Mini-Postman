@@ -120,6 +120,7 @@ class DrawersMini extends HookConsumerWidget {
                       ref
                           .watch(settingProvider.notifier)
                           .setLanguage(LocaleKeys.hindi);
+                      Navigator.of(context).pop();
                     },
                   ),
                   LocaleKeys.hindi.tr().text.make()
@@ -135,6 +136,7 @@ class DrawersMini extends HookConsumerWidget {
                       ref
                           .watch(settingProvider.notifier)
                           .setLanguage(LocaleKeys.spanish.tr());
+                      Navigator.of(context).pop();
                     },
                   ),
                   LocaleKeys.spanish.tr().text.make()

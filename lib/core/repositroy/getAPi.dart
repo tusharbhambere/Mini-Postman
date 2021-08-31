@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mini_postman/core/model/request_state_notifier.dart';
@@ -41,7 +40,7 @@ class GetResponse implements BaseApi {
           responseStatusCode = response.statusCode;
 
           final object = json.decode(response.body);
-          log(object);
+
           body = const JsonEncoder.withIndent('  ').convert(object);
           ping = response.contentLength!;
           status = response.reasonPhrase!;

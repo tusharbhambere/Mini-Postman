@@ -1,4 +1,4 @@
-package com.example.mini_postman
+package com.allrounder.tushar.mini_postman
 
 import io.flutter.embedding.android.FlutterActivity
 

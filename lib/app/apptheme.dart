@@ -6,8 +6,8 @@ class AppThemed {
   static final ThemeData light = ThemeData(
       splashColor: Colors.white,
       //
-      primarySwatch: Colors.orange,
-      buttonColor: Colors.orange[800],
+      primarySwatch: Colors.deepOrange,
+      buttonColor: Colors.deepOrange,
       //
 
       iconTheme: const IconThemeData(color: Colors.black87),
@@ -30,7 +30,7 @@ class AppThemed {
         headline3: fontComfortaa.copyWith(
             color: Colors.black, fontSize: 22, fontWeight: FontWeight.w500),
         headline4: fontComfortaa.copyWith(
-            color: Colors.black54, fontSize: 16, fontWeight: FontWeight.bold),
+            color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),
         headline5: fontComfortaa.copyWith(
             color: Colors.black, fontSize: 19, fontWeight: FontWeight.w700),
         headline6: fontComfortaa.copyWith(
@@ -81,7 +81,7 @@ class AppThemed {
         headline6: fontComfortaa.copyWith(
             color: Colors.white, fontSize: 13, fontWeight: FontWeight.w400),
         subtitle1: fontComfortaa.copyWith(
-            color: Colors.white, fontSize: 14, fontWeight: FontWeight.normal),
+            color: Colors.white, fontSize: 13, fontWeight: FontWeight.normal),
         subtitle2: fontComfortaa.copyWith(
             color: Colors.white, fontWeight: FontWeight.normal),
         button: fontComfortaa.copyWith(color: Colors.white),

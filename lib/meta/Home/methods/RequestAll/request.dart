@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mini_postman/meta/Home/methods/RequestAll/body_page.dart';
-import 'package:mini_postman/meta/Home/methods/RequestAll/headers_page.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class RequestTab extends StatelessWidget {
@@ -12,7 +11,7 @@ class RequestTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Headers(),
+        // const Headers(),
         50.heightBox,
         BodyPage(
           editingController: controller,

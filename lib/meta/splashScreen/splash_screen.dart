@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:global_template/global_template.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:mini_postman/app/constant.dart';
 import 'package:mini_postman/core/notifer/initialise.notifer.dart';
 import 'package:mini_postman/meta/onBoardingscreen/onBoarding_screen.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -29,7 +30,15 @@ class SplashScreen extends HookConsumerWidget {
             },
             children: [
               const Spacer(),
-              Image.asset('assets/images/splash.gif'),
+              'Mini Postman'
+                  .text
+                  .xl4
+                  .textStyle(fontComfortaa)
+                  .black
+                  .color(constant.mainColor)
+                  .make()
+                  .centered(),
+              Image.asset('assets/images/onbording.png'),
               const Spacer(),
             ]);
       },

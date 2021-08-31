@@ -73,10 +73,10 @@ class HomePage extends HookConsumerWidget {
           ),
           TabBar(controller: _tabcontroller, tabs: [
             Tab(
-              child: LocaleKeys.request.tr().text.make(),
+              child: LocaleKeys.request.tr().text.subtitle1(context).make(),
             ),
             Tab(
-              child: LocaleKeys.response.tr().text.make(),
+              child: LocaleKeys.response.tr().text.subtitle1(context).make(),
             ),
           ]),
           Expanded(

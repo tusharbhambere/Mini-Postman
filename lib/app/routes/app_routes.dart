@@ -14,11 +14,9 @@ class MyRoutes {
           screen: (ctx, animation, secondaryAnimation) => const SplashScreen(),
         );
       case HomePage.route:
-        return route.slideTransition(
-          transitionDuration: const Duration(milliseconds: 1500),
-          slidePosition: SlidePosition.fromLeft,
-          screen: (ctx, animation, secondaryAnimation) => HomePage(),
-        );
+        return route.fadeTransition(
+            screen: (ctx, animation, secondaryAnimation) => HomePage());
+
       case OnBoarding.route:
         return route.scaleTransition(
           screen: (ctx, animation, secondaryAnimation) => const OnBoarding(),

@@ -49,7 +49,7 @@ class ResponsePage extends HookConsumerWidget {
             axisSize: MainAxisSize.max,
             alignment: MainAxisAlignment.spaceAround,
           ),
-          VxBox(child: responseModel.newBody.text.make())
+          VxBox(child: responseModel.newBody.selectableText.make().px12())
               .width(double.infinity)
               .border(color: Vx.green100)
               .make()

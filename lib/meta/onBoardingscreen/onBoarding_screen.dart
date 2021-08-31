@@ -14,32 +14,64 @@ class OnBoarding extends HookConsumerWidget {
     final savingstate = ref.read(initiliazeProvider.notifier);
     return Scaffold(
       body: OnboardingPage(
-        // backgroundColorCircleIndicator: constant.mainColor,
-        backgroundOnboarding: Colors.blueGrey,
+        backgroundOnboarding: constant.mainColor,
         skipButtonStyle: OutlinedButton.styleFrom(
             side: const BorderSide(color: Colors.white)),
-        iconNext: const Icon(Icons.next_plan),
-        skipTitleStyle: const TextStyle(fontSize: 15),
+        iconNext: ShowImageAsset(
+          fit: BoxFit.cover,
+          imageSize: 10,
+          imageUrl: 'assets/images/onbording.png',
+          isCircle: true,
+        ),
+        skipTitleStyle: const TextStyle(fontSize: 15, color: Colors.black),
         skipTitle: 'Skip',
         items: [
           OnboardingItem(
+            titleStyle: fontsMontserratAlternate.copyWith(fontSize: 25),
             animationType: OnboardingItemAnimationType.RTL,
-            title: 'Get Method',
-
+            title: 'Quick CRUD Operation',
             subtitle: 'Unlimated Api Calls',
-            // subtitleStyle: fontComfortaa.copyWith(color: Colors.white),
+            subtitleStyle: fontComfortaa.copyWith(color: Colors.white),
             logo: FractionallySizedBox(
                 widthFactor: 4,
                 child: Transform.rotate(
                   angle: 6.5,
                   child: Image.asset(
-                    '${constant.imagePath}/onboarding1.png',
+                    '${constant.imagePath}onboarding1.png',
                     height: 230,
                   ),
                 )),
           ),
-          const OnboardingItem(title: 'Postman4'),
-          const OnboardingItem(title: 'Postman3'),
+          OnboardingItem(
+            titleStyle: fontsMontserratAlternate.copyWith(fontSize: 20),
+            title: 'Get RealTime Exceptions',
+            subtitle: 'Text Json Response',
+            subtitleStyle: fontComfortaa.copyWith(color: Colors.white),
+            logo: FractionallySizedBox(
+                widthFactor: 4,
+                child: Transform.rotate(
+                  angle: 6.5,
+                  child: Image.asset(
+                    '${constant.imagePath}onboarding3.png',
+                    height: 230,
+                  ),
+                )),
+          ),
+          OnboardingItem(
+            titleStyle: fontsMontserratAlternate.copyWith(fontSize: 20),
+            title: 'Available in Multi Languages',
+            subtitle: 'Support Multiple  Themes',
+            subtitleStyle: fontComfortaa.copyWith(color: Colors.white),
+            logo: FractionallySizedBox(
+                widthFactor: 4,
+                child: Transform.rotate(
+                  angle: 6.5,
+                  child: Image.asset(
+                    '${constant.imagePath}onBoarding2.png',
+                    height: 230,
+                  ),
+                )),
+          ),
         ],
         onPageChanged: (value) => '',
         onClickNext: (value) => '',
