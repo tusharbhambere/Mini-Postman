@@ -79,7 +79,7 @@ class AppThemed {
         headline5: fontComfortaa.copyWith(
             color: Colors.white, fontSize: 19, fontWeight: FontWeight.w700),
         headline6: fontComfortaa.copyWith(
-            color: Colors.white, fontSize: 13, fontWeight: FontWeight.w400),
+            color: Colors.white, fontSize: 13, fontWeight: FontWeight.w300),
         subtitle1: fontComfortaa.copyWith(
             color: Colors.white, fontSize: 13, fontWeight: FontWeight.normal),
         subtitle2: fontComfortaa.copyWith(
